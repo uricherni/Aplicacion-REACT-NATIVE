@@ -69,7 +69,7 @@ const Aplicante = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://10.152.2.123:5000/Postulaciones")
+		const { data } = await axios.get("http://10.152.2.125:5000/Postulaciones")
 		setAplicantes(data)
 	}
 
