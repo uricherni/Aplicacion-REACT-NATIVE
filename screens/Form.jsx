@@ -15,7 +15,7 @@ const Item = ({ item }) => {
 
 	return (
 		<>
-			<Text style={styles.label.Texto}>{item.Descripcion} </Text>
+			<Text style={styles.label}>{item.Descripcion} </Text>
 			<TextInput
 				style={styles.input}
 				value={textValue}
@@ -58,7 +58,7 @@ const Form = () => {
 		]
 		console.log(req)
 		axios
-			.post(`http://10.152.2.123	:5000/Respuesta`, req)
+			.post(`http://10.152.2.123:5000/Respuesta`, req)
 			.then(function (response) {
 				setDescripcionText(Descripcion)
 				setIdPreguntaText(IdPregunta)
@@ -87,13 +87,15 @@ const Form = () => {
 					numColumns={1}
 					renderItem={({ item }) => <Item item={item} />}
 				/>
-				{/* <TouchableOpacity
+				<TouchableOpacity
 					blurRadius={3}
 					style={styles.Enviar}
 					onPress={() => Respuesta(Descripcion.IdPregunta)}
+					
 				>
-					<Text>Enviar</Text>
-				</TouchableOpacity> */}
+					
+				</TouchableOpacity>
+				
 			</>
 		</ImageBackground>
 	)
@@ -108,24 +110,19 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		padding: 10,
 		color: "#000",
-		fontWeight: "bold",
-		
 	},
 	label: {
 		margin: 4,
 		padding: 6,
 		color: "#000",
 		fontSize: 20,
-		
 	},
 
-	Text: {
+	Texto: {
 		color: "#000",
 		fontSize: 20,
 		fontWeight: "bold",
 		marginLeft: "auto",
-
-		
 	},
 	Enviar: {
 		color: "#000",
