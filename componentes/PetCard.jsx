@@ -21,7 +21,7 @@ const PetCard = ({ mascota }) => {
 						<Text>Refugio: {IdRefugio}</Text>
 					</Title>
 					<Text> Nombre:{Nombre}</Text>
-					<Text> Edad:{Edad}</Text>
+					<Text> Edad:{Edad} años</Text>
 					<Text> Estado: {Estado}</Text>
 					<Text> Raza: {IdRaza}</Text>
 					<Text> {Descripcion}</Text>
