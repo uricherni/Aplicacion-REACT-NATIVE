@@ -56,7 +56,7 @@ const Item = ({ item }) => (
 	<View style={styles.item}>
 	
 		<Text style={styles.title}>IdUsuario{item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
-		<Text style={styles.title}>Nombre:Uriel{item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
+		<Text style={styles.title}>Nombre:Uriel {item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
 		
 	</View>
 )

@@ -56,7 +56,7 @@ const Form = () => {
 			{ IdPregunta: 3, Descripcion: "", IdPostulacion: IdPostulacion },
 			{ IdPregunta: 4, Descripcion: "", IdPostulacion: IdPostulacion },
 		]
-		console.log(req)
+		console.log(req);
 		axios
 			.post(`http://10.152.2.123:5000/Respuesta`, req)
 			.then(function (response) {
@@ -69,6 +69,10 @@ const Form = () => {
 				console.log(error)
 			})
 	}
+
+
+
+	
 
 	return (
 		<ImageBackground

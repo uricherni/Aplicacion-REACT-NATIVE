@@ -52,9 +52,8 @@ const styles = StyleSheet.create({
 		margin: 3,
 		width: "100%",
 		aspectRatio: 1.2,
-		
 		resizeMode: 'stretch',
-          borderWidth: 6,
+        borderWidth: 6,
     },
 })
 
