@@ -13,7 +13,7 @@ const Home = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://192.168.0.6:5000/Mascota")
+		const { data } = await axios.get("http://10.152.2.123:5000/Mascota")
 		setMascotas(data)
 	}
 

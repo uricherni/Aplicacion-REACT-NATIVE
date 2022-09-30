@@ -15,7 +15,7 @@ const Item = ({ item }) => {
 
 	return (
 		<>
-			<Text style={styles.label}>{item.Descripcion} </Text>
+			<Text style={styles.label.Texto}>{item.Descripcion} </Text>
 			<TextInput
 				style={styles.input}
 				value={textValue}
@@ -36,7 +36,7 @@ const Form = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://192.168.0.6:5000/Pregunta")
+		const { data } = await axios.get("http://10.152.2.123:5000/Pregunta")
 		setPreguntas(data)
 	}
 	const [Text] = useState("hola")
@@ -58,7 +58,7 @@ const Form = () => {
 		]
 		console.log(req)
 		axios
-			.post(`http://192.168.0.6:5000/Respuesta`, req)
+			.post(`http://10.152.2.123	:5000/Respuesta`, req)
 			.then(function (response) {
 				setDescripcionText(Descripcion)
 				setIdPreguntaText(IdPregunta)
@@ -108,19 +108,24 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		padding: 10,
 		color: "#000",
+		fontWeight: "bold",
+		
 	},
 	label: {
 		margin: 4,
 		padding: 6,
 		color: "#000",
 		fontSize: 20,
+		
 	},
 
-	Texto: {
+	Text: {
 		color: "#000",
 		fontSize: 20,
 		fontWeight: "bold",
 		marginLeft: "auto",
+
+		
 	},
 	Enviar: {
 		color: "#000",

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 		// fontSize: "72px",
 	},
 	img: {
-		margin: 7,
+		margin: 3,
 		width: "100%",
 		aspectRatio: 1.2,
 		

@@ -7,7 +7,7 @@ import { Button, Card, Title } from "react-native-paper"
 
 const PetCard = ({ mascota }) => {
 	const navigation = useNavigation()
-	const { IdRefugio, Nombre, Edad, Estado, Raza, Descripcion, Foto } = mascota
+	const { IdRefugio, Nombre, Edad, Estado, IdRaza, Descripcion, Foto } = mascota
 
 	function onClick() {
 		navigation.navigate("Form")
@@ -20,10 +20,10 @@ const PetCard = ({ mascota }) => {
 					<Title>
 						<Text>Refugio: {IdRefugio}</Text>
 					</Title>
-					<Text> {Nombre}</Text>
-					<Text> {Edad}</Text>
+					<Text> Nombre:{Nombre}</Text>
+					<Text> Edad:{Edad}</Text>
 					<Text> Estado: {Estado}</Text>
-					<Text> Raza: {Raza}</Text>
+					<Text> Raza: {IdRaza}</Text>
 					<Text> {Descripcion}</Text>
 				</Card.Content>
 				<Card.Cover

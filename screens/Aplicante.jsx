@@ -5,6 +5,7 @@ import {
 	View,
 	SafeAreaView,
 	FlatList,
+	Button,
 	StatusBar,
 } from "react-native"
 import axios from "axios"
@@ -51,10 +52,14 @@ const DATA = [
 ]
 
 const Item = ({ item }) => (
+	
 	<View style={styles.item}>
-		<Text style={styles.title}>{item.IdUsuario}</Text>
+	
+		<Text style={styles.title}>IdUsuario{item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
+		
 	</View>
 )
+
 
 const Aplicante = () => {
 	const [aplicantes, setAplicantes] = useState()
@@ -63,10 +68,14 @@ const Aplicante = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://192.168.0.6:5000/Postulaciones")
+		const { data } = await axios.get("http://10.152.2.123:5000/Postulaciones")
 		setAplicantes(data)
 	}
 
+
+
+
+	
 	return (
 		<SafeAreaView style={styles.container}>
 			<FlatList
@@ -74,7 +83,9 @@ const Aplicante = () => {
 				keyExtractor={(item, index) => index}
 				renderItem={({ item }) => <Item item={item} />}
 				renderSectionHeader={({ section: { item } }) => (
+				
 					<Text style={styles.header}>{item.IdPostulante}</Text>
+					
 				)}
 			/>
 		</SafeAreaView>
