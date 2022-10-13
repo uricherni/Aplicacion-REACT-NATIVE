@@ -19,10 +19,10 @@ const bodyPostulaciones ={
 }
 
 const onClick= async()=>{
-const{data}=await axios.post(
-    url: 'http://10.152.2.99:5000/Postulaciones',
+const{data}=await axios.post{
+    url: "http://10.152.2.99:5000/Postulaciones",
     data: bodyPostulaciones
-)
+}
 console.log(message:data)
 navigation.navigate(screen:'Form')
 
