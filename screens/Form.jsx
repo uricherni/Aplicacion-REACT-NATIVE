@@ -36,7 +36,7 @@ const Form = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://10.152.2.123:5000/Pregunta")
+		const { data } = await axios.get("http://10.152.2.99:5000/Pregunta")
 		setPreguntas(data)
 	}
 	const [Text] = useState("hola")
@@ -58,7 +58,7 @@ const Form = () => {
 		]
 		console.log(req);
 		axios
-			.post(`http://10.152.2.123:5000/Respuesta`, req)
+			.post(`http://10.152.2.99:5000/Respuesta`, req)
 			.then(function (response) {
 				setDescripcionText(Descripcion)
 				setIdPreguntaText(IdPregunta)

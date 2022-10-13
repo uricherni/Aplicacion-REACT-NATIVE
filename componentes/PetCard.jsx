@@ -9,9 +9,28 @@ const PetCard = ({ mascota }) => {
 	const navigation = useNavigation()
 	const { IdRefugio, Nombre, Edad, Estado, IdRaza, Descripcion, Foto } = mascota
 
-	function onClick() {
-		navigation.navigate("Form")
-	}
+const bodyPostulaciones ={
+
+    IdPostulacion: 1,
+    IdUsuario: 2,
+    IdMascota:6,
+    Aceptado:1, 
+
+}
+
+const onClick= async()=>{
+const{data}=await axios.post(
+    url: 'http://10.152.2.99:5000/Postulaciones',
+    data: bodyPostulaciones
+)
+console.log(message:data)
+navigation.navigate(screen:'Form')
+
+
+}
+
+
+	
 
 	return (
 		<View>
@@ -133,5 +152,11 @@ const styles = StyleSheet.create({
 
 });
 
+
+
+-------------
+function onClick() {
+		navigation.navigate("Form")
+	}
 
 */
