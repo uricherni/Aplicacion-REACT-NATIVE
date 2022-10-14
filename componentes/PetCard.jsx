@@ -2,7 +2,7 @@
 import React from "react"
 import { Text, View } from "react-native"
 import { useNavigation } from "@react-navigation/native"
-import { TouchableOpacity, Card, Title } from "react-native-paper"
+import { Button, Card, Title, Button } from "react-native-paper"
  import axios from "axios"
 
 const PetCard = ({ mascota }) => {
@@ -46,7 +46,7 @@ navigation.navigate('Form')
 					}}
 				/>
 				<Card.Actions>
-					<TouchableOpacity onTouchStart={onClick}> Aplicar </TouchableOpacity>
+					<Button onTouchStart={onClick}> Aplicar </Button>
 				</Card.Actions>
 			</Card>
 		</View>
