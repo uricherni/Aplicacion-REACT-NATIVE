@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from "react"
-import { Text, View } from "react-native"
+import { Text, View, TouchableOpacity} from "react-native"
 import { useNavigation } from "@react-navigation/native"
-import { TouchableOpacity, Card, Title } from "react-native-paper"
+import { Button, Card, Title } from "react-native-paper"
  import axios from "axios"
 
 const PetCard = ({ mascota }) => {
@@ -46,7 +46,9 @@ navigation.navigate('Form')
 					}}
 				/>
 				<Card.Actions>
-					<TouchableOpacity onTouchStart={onClick}> Aplicar </TouchableOpacity>
+					<TouchableOpacity onPress={onClick}>
+					<Text>APLICAR</Text> 
+					</TouchableOpacity>
 				</Card.Actions>
 			</Card>
 		</View>
