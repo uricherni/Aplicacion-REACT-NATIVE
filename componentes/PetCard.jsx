@@ -10,22 +10,22 @@ const PetCard = ({ mascota }) => {
 	const { Nombre, Edad, Estado, Descripcion, NombreRefugio, NombreRaza, Foto } = mascota
 
 const bodyPostulaciones = {
-
-    IdUsuario: 2,
-    IdMascota:6,
-    Aceptado: 1, 
-
+    "IdUsuario": 2,
+    "IdMascota": 6,
+    "Aceptado": true
 }
 
-const onClick= async()=>{
-const{data}=await axios.post({
-    url: 'http://10.152.2.122:5000/Postulaciones',
-    data: bodyPostulaciones
-})
+const onClick = async () => {
+	console.log(bodyPostulaciones);
+	await axios({
+		method: 'post',
+		url: "http://localhost:5000/Postulaciones",
+		data: bodyPostulaciones
+	})
+};
 
-console.log(data)
+//console.log(data)
 navigation.navigate('Form')
-}
 
 	return (
 		<View>
@@ -53,8 +53,7 @@ navigation.navigate('Form')
 			</Card>
 		</View>
 	)
-
 }
-                
+
 export default PetCard
             
