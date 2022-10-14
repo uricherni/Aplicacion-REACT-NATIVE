@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { View, Text, StyleSheet, FlatList } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-
 import PetCard from "../componentes/PetCard"
 import axios from "axios"
 const Home = () => {
@@ -13,7 +12,7 @@ const Home = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://10.152.2.99:5000/Mascota")
+		const { data } = await axios.get("http://10.152.2.122:5000/Mascota")
 		setMascotas(data)
 	}
 
