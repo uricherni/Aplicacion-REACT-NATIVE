@@ -5,8 +5,11 @@ import { useNavigation } from "@react-navigation/native"
 import { Button, Card, Title } from "react-native-paper"
  import axios from "axios"
 
-const PetCard = ({ mascota }) => {
+const PetCard = ({ mascota}, ) => {
 	const navigation = useNavigation()
+	function OnPress() {
+		navigation.navigate("Form")
+	}
 	const { Nombre, Edad, Estado, Descripcion, NombreRefugio, NombreRaza, Foto } = mascota
 
 const bodyPostulaciones = {
@@ -24,8 +27,7 @@ const onClick = async () => {
 	})
 };
 
-//console.log(data)
-navigation.navigate('Form')
+
 
 	return (
 		<View>
@@ -46,7 +48,7 @@ navigation.navigate('Form')
 					}}
 				/>
 				<Card.Actions>
-					<TouchableOpacity onPress={onClick}>
+					<TouchableOpacity onPress={OnPress}>
 					<Text>APLICAR</Text> 
 					</TouchableOpacity>
 				</Card.Actions>
