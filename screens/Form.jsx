@@ -11,40 +11,25 @@ import {
 } from 'react-native'
 import axios from 'axios'
 
-const Item = ({ item }) => {
-	const [textValue, setValue] = useState('')
+// const Item = ({ item }) => {
+// 	const [textValue, setValue] = useState('')
 
-	return (
-		<>
-			<Text style={styles.label}>{item.Descripcion} </Text>
-			<TextInput
-				style={styles.input}
-				value={textValue}
-				onChange={(e) => setValue(e.target.value)}
-				placeholder="Respuesta"
-				keyboardType="default"
-			/>
-		</>
-	)
-}
+// 	return (
+// 		<>
+// 			<Text style={styles.label}>{item.Descripcion} </Text>
+// 			<TextInput
+// 				style={styles.input}
+// 				value={textValue}
+// 				onChange={(e) => setValue(e.target.value)}
+// 				placeholder="Respuesta"
+// 				keyboardType="default"
+// 			/>
+// 		</>
+// 	)
+// }
 
 const Form = ({ navigate }) => {
-	// let Formulario = []
 	const [preguntas, setPreguntas] = useState([])
-	const [respuestas, setRespuestas] = useState([])
-	// const [respuesta, setRespuesta] = useState(
-	// 	Array(18).fill({
-	// 		Descripcion: '',
-	// 		IdPregunta: 0,
-	// 		IdPostulacion: 0,
-	// 	})
-	// )
-
-	const [respuesta, setRespuesta] = useState({
-		Descripcion: '',
-		IdPregunta: 0,
-		IdPostulacion: 0,
-	})
 
 	useEffect(() => {
 		consultarData()
@@ -52,62 +37,41 @@ const Form = ({ navigate }) => {
 
 	const consultarData = async () => {
 		const { data } = await axios.get('http://192.168.0.115:5000/Pregunta')
-		setPreguntas([data[0]])
-		// setRespuesta(
-		// 	respuesta.map((resp, index) => {
-		// 		resp.Descripcion,
-		// 			(resp.IdPregunta = index + 1),
-		// 			(resp.IdPostulacion = 0)
-		// 	})
-		// )
+		setPreguntas(data)
 	}
+	const [respuesta, setRespuesta] = useState(
+		Array(18).fill({
+			Descripcion: '',
+			IdPregunta: 0,
+			IdPostulacion: 0,
+		})
+	)
 
 	const onChange = (event, index, idPregunta) => {
 		const { text } = event.nativeEvent
-		const respuestas = []
-		// for (var i = 0; i < respuesta.length; i++) {
-		// 	const res = respuesta[i]
-		// 	if (i === index) {
-		// 		res.Descripcion = text
-		// 		res.IdPostulacion = 1
-		// 		res.IdPregunta = idPregunta
-		// 	}
-		// 	respuestas.push(res)
-		// 	setRespuesta([...respuesta, respuestas])
-		// }
-		respuesta.map((res, i) => {
-			if (i === index) {
-				res.Descripcion = text
-				res.IdPostulacion = 1
-				res.IdPregunta = idPregunta
+		const newArray = respuesta.map((item, i) => {
+			if (index === i) {
+				return { ...item, Descripcion: text, IdPregunta: idPregunta }
+			} else {
+				return item
 			}
-			return res
-			// 	respuestas.push(res)
-			// })
 		})
+		setRespuesta(newArray)
 	}
 
 	const Respuesta = () => {
 		console.log(respuesta)
-		// respuesta.map((res) => {
-		// 	axios
-		// 		.post(`http://192.168.0.115:5000/Respuesta`, res)
-		// 		.then(function (response) {
-		// 			console.log('guardo')
-		// 		})
-		// 		.catch(function (error) {
-		// 			console.log(error)
-		// 		})
-		// })
-
-		axios
-			.post(`http://192.168.0.115:5000/Respuesta`, respuesta)
-			.then(function (response) {
-				console.log('guardo')
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
+		//El envio de data es ok!
+		respuesta.map((res) => {
+			axios
+				.post(`http://192.168.0.115:5000/Respuesta`, res) //res contiene las 18 respuestas
+				.then(function (response) {
+					console.log('guardo')
+				})
+				.catch(function (error) {
+					console.log(error)
+				})
+		})
 	}
 
 	return (
@@ -131,19 +95,22 @@ const Form = ({ navigate }) => {
 						showsVerticalScrollIndicator={true}
 						numColumns={1}
 						renderItem={({ item, index }) => {
+							//item => Pregunta posicion segun index
+
 							return (
 								// <Item item={item}/>
 								<>
 									<Text style={styles.label}>{item.Descripcion} </Text>
 									<TextInput
 										style={styles.input}
-										value={respuesta.Descripcion}
-										// onChange={(event) =>
-										// 	onChange(event, index, item.IdPregunta)
-										// }
-										onChangeText={(text) =>
-											setRespuesta({ ...respuesta, Descripcion: text })
+										value={respuesta[index].Descripcion}
+										onChange={(event) =>
+											onChange(event, index, item.IdPregunta)
 										}
+										// onChangeText={(text) =>
+										// 	setRespuesta({ ...respuesta, Descripcion: text })
+										// }
+										name={'Descripcion'}
 										placeholder="Respuesta"
 										keyboardType="default"
 									/>
