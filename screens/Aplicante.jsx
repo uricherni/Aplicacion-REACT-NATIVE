@@ -1,55 +1,6 @@
 import React, { useEffect, useState } from "react"
-import {
-	StyleSheet,
-	Text,
-	View,
-	SafeAreaView,
-	FlatList,
-	Button,
-	StatusBar,
-} from "react-native"
+import {StyleSheet,Text,View,SafeAreaView,FlatList,StatusBar,} from "react-native"
 import axios from "axios"
-
-const DATA = [
-	{
-		title: "Alimentos",
-		data: [
-			"Alimento Agility Premium para perro adulto todos los tamaños sabor mix en bolsa de 20 kg",
-		],
-	},
-	{
-		title: "Alimentos",
-		data: [
-			"Alimento Royal Canin Club Performance Weight Control para perro adulto todos los tamaños sabor mix en bolsa de 15 kg",
-		],
-	},
-	{
-		title: "Alimentos",
-		data: [
-			"Alimento Nutrique Medium Puppy para perro cachorro de raza mediana sabor pavo en bolsa de 12 kg",
-		],
-	},
-	{
-		title: "Alimentos",
-		data: ["Nutrique Perro Cachorro Mediano X 12 Kg"],
-	},
-	{
-		title: "Alimentos",
-		data: ["Alimento Balanceado Nutrique Skin Sensitive Dog 15kgs"],
-	},
-	{
-		title: "Alimentos",
-		data: [
-			"Alimento Nutrique Medium Young Adult Dog para perro adulto de raza mediana sabor pavo y cerdo en bolsa de 12 kg",
-		],
-	},
-	{
-		title: "Alimentos",
-		data: [
-			"Alimento Nutrique Medium Young Adult Dog para perro adulto de raza mediana sabor pavo y cerdo en bolsa de 12 kg",
-		],
-	},
-]
 
 const Item = ({ item }) => (
 	

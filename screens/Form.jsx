@@ -40,8 +40,8 @@ const Form = () => {
 		setPreguntas(data)
 	}
 	const [Text] = useState("hola")
-	console.log("preguntas:")
-	console.log(preguntas)
+	// console.log("preguntas:")
+	// console.log(preguntas)
 
 	const [Descripcion, setDescripcionText] = useState("")
 
@@ -49,13 +49,16 @@ const Form = () => {
 
 	const [IdPregunta, setIdPreguntaText] = useState("")
 
-	const Respuesta = (params) => {
+	function Respuesta(idPreg) {
 		let req = [
 			{ IdPregunta: 1, Descripcion: "", IdPostulacion: IdPostulacion },
-			{ IdPregunta: 2, Descripcion: "", IdPostulacion: IdPostulacion },
-			{ IdPregunta: 3, Descripcion: "", IdPostulacion: IdPostulacion },
-			{ IdPregunta: 4, Descripcion: "", IdPostulacion: IdPostulacion },
+			{ IdPregunta: 2, Descripcion: "a", IdPostulacion: IdPostulacion },
+			{ IdPregunta: 3, Descripcion: "cahu", IdPostulacion: IdPostulacion },
+			{ IdPregunta: 4, Descripcion: "hola", IdPostulacion: IdPostulacion },
+
 		]
+		console.log("id pregunta: ")
+		console.log(idPreg)
 		console.log(req);
 		axios
 			.post(`http://10.152.2.122:5000/Respuesta`, req)
