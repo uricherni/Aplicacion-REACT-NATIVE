@@ -8,6 +8,7 @@ import {
 	TouchableOpacity,
 	View,
 	FlatList,
+	Button,
 } from 'react-native'
 import axios from 'axios'
 
@@ -36,7 +37,7 @@ const Form = ({ navigate }) => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get('http://192.168.0.115:5000/Pregunta')
+		const { data } = await axios.get('http://10.152.2.122:5000/Pregunta')
 		setPreguntas(data)
 	}
 	const [respuesta, setRespuesta] = useState(
@@ -64,7 +65,7 @@ const Form = ({ navigate }) => {
 		//El envio de data es ok!
 		respuesta.map((res) => {
 			axios
-				.post(`http://192.168.0.115:5000/Respuesta`, res) //res contiene las 18 respuestas
+				.post(`http://10.152.2.122:5000/Respuesta`, res) //res contiene las 18 respuestas
 				.then(function (response) {
 					console.log('guardo')
 				})
@@ -76,52 +77,57 @@ const Form = ({ navigate }) => {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<TouchableOpacity
-				blurRadius={3}
-				style={styles.Enviar}
-				onPress={() => Respuesta()}
-			>
-				<ImageBackground
-					source={{
-						uri: 'https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png',
-					}}
-					resizeMode="cover"
-					blurRadius={0}
-					style={{ flex: 1, opacity: 0.5 }}
-				>
-					<FlatList
-						data={preguntas}
-						keyExtractor={(item) => item.IdPregunta}
-						showsVerticalScrollIndicator={true}
-						numColumns={1}
-						renderItem={({ item, index }) => {
-							//item => Pregunta posicion segun index
 
-							return (
-								// <Item item={item}/>
-								<>
-									<Text style={styles.label}>{item.Descripcion} </Text>
-									<TextInput
-										style={styles.input}
-										value={respuesta[index].Descripcion}
-										onChange={(event) =>
-											onChange(event, index, item.IdPregunta)
-										}
-										// onChangeText={(text) =>
-										// 	setRespuesta({ ...respuesta, Descripcion: text })
-										// }
-										name={'Descripcion'}
-										placeholder="Respuesta"
-										keyboardType="default"
-									/>
-								</>
-							)
-						}}
-					/>
-				</ImageBackground>
-				<Text>Enviar</Text>
-			</TouchableOpacity>
-		</View>
+			<ImageBackground
+				source={{
+					uri: 'https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png',
+				}}
+				resizeMode="cover"
+				blurRadius={0}
+				style={{ flex: 1, opacity: 0.5 }}
+			>
+
+				<FlatList
+					data={preguntas}
+					keyExtractor={(item) => item.IdPregunta}
+					showsVerticalScrollIndicator={true}
+					numColumns={1}
+					renderItem={({ item, index }) => {
+						//item => Pregunta posicion segun index
+
+						return (
+							// <Item item={item}/>
+							<>
+								<Text style={styles.label}>{item.Descripcion} </Text>
+								<TextInput
+									style={styles.input}
+									value={respuesta[index].Descripcion}
+									onChange={(event) =>
+										onChange(event, index, item.IdPregunta)
+									}
+									// onChangeText={(text) =>
+									// 	setRespuesta({ ...respuesta, Descripcion: text })
+									// }
+									name={'Descripcion'}
+									placeholder="Respuesta"
+									keyboardType="default"
+								/>
+							</>
+						)
+					}}
+				/>
+
+			</ImageBackground>
+
+
+			<Button
+			title="Enviar"
+			blurRadius={3}
+			style={styles.Enviar}
+			onPress={() => Respuesta()}
+			/>
+			</View>
+
 	)
 }
 export default Form
@@ -155,8 +161,8 @@ const styles = StyleSheet.create({
 		backgroundColor: '#03fff7',
 		marginLeft: 'auto',
 		marginRight: 'auto',
-		// width: 100,
-		height: 30,
+		width: 100,
+		
 	},
 
 	scrollView: {
