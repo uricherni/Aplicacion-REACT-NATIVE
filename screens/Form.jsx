@@ -52,7 +52,7 @@ const Form = ({ navigate }) => {
 		const { text } = event.nativeEvent
 		const newArray = respuesta.map((item, i) => {
 			if (index === i) {
-				return { ...item, Descripcion: text, IdPregunta: idPregunta }
+				return { ...item, Descripcion: text, IdPregunta: idPregunta, IdPostulacion: IdPostulacion }
 			} else {
 				return item
 			}
