@@ -10,14 +10,24 @@ import {
 } from "react-native"
 import { UserContext } from "../contexts/useUser"
 import UserServicies from "../services/UserServicies"
-import { useState } from 'react'
+import { useState } from "react"
 
 const LogIn = ({ navigation }) => {
 	const { SetUser } = useContext(UserContext)
 	function onClick() {
 		navigation.navigate("Registrarse")
 	}
-
+	const LogInUser = async () => {
+		try {
+			const islogged = await UserServicies.login("Uri", "1234")
+			if (islogged) {
+				SetUser(true)
+			}
+		} catch (error) {
+			console.log(error.message)
+		}
+	}
+	
 
 	return (
 		<>
@@ -30,7 +40,7 @@ const LogIn = ({ navigation }) => {
 				<View style={styles.Texto}>
 					<TextInput
 						style={styles.input}
-						placeholder="Email"
+						placeholder="Nombre de usuario"
 						keyboardType="default"
 					/>
 				</View>
@@ -65,9 +75,9 @@ const styles = StyleSheet.create({
 
 	img: {
 		margin: 0,
-		width: 200,
-		height: 220,
-		alignSelf: 'center'
+		width: "100%",
+		height: 400,
+
 	},
 	input: {
 		backgroundColor: "#fff",
