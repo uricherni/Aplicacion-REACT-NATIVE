@@ -4,7 +4,7 @@ import { TouchableOpacity, View, StyleSheet, Image, Text } from "react-native"
 
 const Inicio = ({ navigation }) => {
 	function login() {
-		navigation.navigate("Registrarse")
+		navigation.navigate("LogIn")
 	}
 	return (
 		<View style={{ ...styles.Fondo, top: 30 }}>

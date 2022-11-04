@@ -22,7 +22,7 @@ const onClick = async () => {
 	console.log(bodyPostulaciones);
 	await axios({
 		method: 'post',
-		url: "http://localhost:5000/Postulaciones",
+		url: "http://10.152.2.99:5000/Postulaciones",
 		data: bodyPostulaciones
 	})
 };

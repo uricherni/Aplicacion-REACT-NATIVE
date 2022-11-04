@@ -22,7 +22,7 @@ const Registrarse = ({ navigation }) => {
 		}
 
 		const { status } = await axios.post(
-			'http://192.168.0.115:5000/Usuario',
+			'http://10.152.2.99:5000/Usuario',
 			data
 		)
 		if (status === 201) {

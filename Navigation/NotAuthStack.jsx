@@ -17,15 +17,16 @@ const NotAuthStack= () => {
 			/>
 			<Stack.Screen
 				options= {{headerShown: false}}
+				name='LogIn'
+				component={LogIn}
+			/>
+			<Stack.Screen
+				options= {{headerShown: false}}
 				name='Registrarse'
 				component={Registrarse}
 			/>
 
-			<Stack.Screen
-				options= {{headerShown: false}}
-				name='LogIn'
-				component={LogIn}
-			/>
+			
 			<Stack.Screen
 				options= {{headerShown: false}}
 				name='cuenta'

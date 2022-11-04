@@ -14,7 +14,7 @@ import UserServicies from "../services/UserServicies"
 const LogIn = ({ navigation }) => {
 	const { SetUser } = useContext(UserContext)
 	function onClick() {
-		navigation.navigate("cuenta")
+		navigation.navigate("Registrarse")
 	}
 	const LogInUser = async () => {
 		try {
@@ -26,6 +26,9 @@ const LogIn = ({ navigation }) => {
 			console.log(error.message)
 		}
 	}
+
+
+
 	return (
 		<>
 			<View style={{ flex: 1, backgroundColor: "#6ED4C8" }}>
@@ -46,7 +49,7 @@ const LogIn = ({ navigation }) => {
 					<TextInput
 						style={styles.input}
 						placeholder="Contraseña"
-						keyboardType="numeric"
+						keyboardType="default"
 						secureTextEntry={true}
 					/>
 				</View>
@@ -71,9 +74,10 @@ const styles = StyleSheet.create({
 	},
 
 	img: {
-		margin: 1,
-		width: "70%",
-		aspectRatio: 1,
+		margin: 0,
+		width: "100%",
+		height: 400,
+
 	},
 	input: {
 		backgroundColor: "#fff",

@@ -37,7 +37,7 @@ const Form = ({ navigate }) => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get('http://10.152.2.122:5000/Pregunta')
+		const { data } = await axios.get('http://10.152.2.99:5000/Pregunta')
 		setPreguntas(data)
 	}
 	const [respuesta, setRespuesta] = useState(
@@ -65,7 +65,7 @@ const Form = ({ navigate }) => {
 		//El envio de data es ok!
 		respuesta.map((res) => {
 			axios
-				.post(`http://10.152.2.122:5000/Respuesta`, res) //res contiene las 18 respuestas
+				.post(`http://10.152.2.99:5000/Respuesta`, res) //res contiene las 18 respuestas
 				.then(function (response) {
 					console.log('guardo')
 				})
