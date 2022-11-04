@@ -4,6 +4,7 @@ import LogIn from "../screens/Login"
 import Inicio from "../screens/Inicio"
 import Registrarse from "../screens/Registrarse"
 import Cuenta from "../screens/Cuenta"
+import Home from "../screens/Home"
 
 const Stack= createNativeStackNavigator()
 
@@ -24,6 +25,11 @@ const NotAuthStack= () => {
 				options= {{headerShown: false}}
 				name='Registrarse'
 				component={Registrarse}
+			/>
+				<Stack.Screen
+				options= {{headerShown: false}}
+				name='Home'
+				component={Home}
 			/>
 
 			

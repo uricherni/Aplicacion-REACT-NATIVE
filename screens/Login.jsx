@@ -10,23 +10,13 @@ import {
 } from "react-native"
 import { UserContext } from "../contexts/useUser"
 import UserServicies from "../services/UserServicies"
+import { useState } from 'react'
 
 const LogIn = ({ navigation }) => {
 	const { SetUser } = useContext(UserContext)
 	function onClick() {
 		navigation.navigate("Registrarse")
 	}
-	const LogInUser = async () => {
-		try {
-			const islogged = await UserServicies.login("Uri", "1234")
-			if (islogged) {
-				SetUser(true)
-			}
-		} catch (error) {
-			console.log(error.message)
-		}
-	}
-
 
 
 	return (
@@ -40,7 +30,7 @@ const LogIn = ({ navigation }) => {
 				<View style={styles.Texto}>
 					<TextInput
 						style={styles.input}
-						placeholder="Nombre de usuario"
+						placeholder="Email"
 						keyboardType="default"
 					/>
 				</View>
