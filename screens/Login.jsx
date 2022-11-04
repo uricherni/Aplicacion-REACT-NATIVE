@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
 
 	img: {
 		margin: 0,
-		width: "100%",
-		height: 400,
-
+		width: 200,
+		height: 220,
+		alignSelf: 'center'
 	},
 	input: {
 		backgroundColor: "#fff",
