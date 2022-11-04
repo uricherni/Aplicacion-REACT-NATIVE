@@ -9,7 +9,7 @@ import {
 	Text,
 } from "react-native"
 import { UserContext } from "../contexts/useUser"
-import UserServicies from "../services/UserServicies"
+import { dologin } from "../services/UserServicies"
 import { useState } from "react"
 
 const LogIn = ({ navigation }) => {
@@ -19,7 +19,7 @@ const LogIn = ({ navigation }) => {
 	}
 	const LogInUser = async () => {
 		try {
-			const islogged = await UserServicies.login("Uri", "1234")
+			const islogged = await dologin("jade.arevort@gmail.com", "CuentaMascotas")
 			if (islogged) {
 				SetUser(true)
 			}
@@ -54,7 +54,7 @@ const LogIn = ({ navigation }) => {
 					/>
 				</View>
 
-				<TouchableOpacity style={styles.Enviar} onPress={() => LogInUser()}>
+				<TouchableOpacity style={styles.Enviar} onPress={LogInUser}>
 					<Text>Sign In</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.Enviar} onPress={onClick}>

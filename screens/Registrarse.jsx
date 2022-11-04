@@ -4,7 +4,6 @@ import { Picker } from '@react-native-picker/picker'
 import { Button } from 'react-native'
 import axios from 'axios'
 
-
 const Registrarse = ({ navigation }) => {
 	const [nombre, setNombre] = useState('')
 	const [apellido, setApellido] = useState('')
@@ -31,15 +30,11 @@ const Registrarse = ({ navigation }) => {
 			// navigation.navigate('/')
 		} else {
 			console.log('hubo un error')
-		}  
-		
-		navigation.navigate('Home')
+		}
 	}
-
 
 	return (
 		<>
-		
 			<TextInput label="Nombre" onChangeText={(text) => setNombre(text)} />
 			<TextInput label="Apellido" onChangeText={(text) => setApellido(text)} />
 			<TextInput label="Email" onChangeText={(text) => setEmail(text)} />
@@ -61,11 +56,10 @@ const Registrarse = ({ navigation }) => {
 				onPress={onClick}
 				title="Enviar"
 				color="#841584"
-				accessibilityLabel=""
+				accessibilityLabel="hola"
 			/>
-			
 		</>
 	)
+}
 
-	}
 export default Registrarse
