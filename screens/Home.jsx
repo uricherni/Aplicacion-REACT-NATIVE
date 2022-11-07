@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
-import { View, Text, StyleSheet, FlatList } from "react-native"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
-import PetCard from "../componentes/PetCard"
-import axios from "axios"
+import React, { useEffect, useState, useContext } from 'react'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import PetCard from '../componentes/PetCard'
+import { api } from '../api'
+import { UserContext } from '../contexts/UserContext/UserContext'
 const Home = () => {
 	const { top } = useSafeAreaInsets()
 	const [mascotas, setMascotas] = useState()
@@ -12,13 +13,14 @@ const Home = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("http://10.152.2.122:5000/Mascota")
+		const { data } = await api.get('/Mascota')
 		setMascotas(data)
 	}
-
+	// const { usuario } = useContext(UserContext)
 	return (
 		<View style={styles.fondo}>
 			<Text style={styles.Texto}>Lista de mascotas para adoptar:</Text>
+			{/* <Text style={styles.Texto}>{usuario.Nombre}</Text> */}
 			{mascotas && (
 				<View style={ContenedorCards.container}>
 					<FlatList
@@ -47,24 +49,24 @@ const Home = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	Texto: {
-		color: "#000",
+		color: '#000',
 		fontSize: 12,
-		fontWeight: "bold",
+		fontWeight: 'bold',
 		flex: 1,
 	},
 	title: {
 		fontSize: 25,
-		fontWeight: "bold",
+		fontWeight: 'bold',
 	},
 })
 const ContenedorCards = StyleSheet.create({
 	container: {
-		alignContent: "center",
+		alignContent: 'center',
 
 		margin: 37,
 	},

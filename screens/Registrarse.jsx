@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextInput, Text } from 'react-native-paper'
 import { Picker } from '@react-native-picker/picker'
 import { Button } from 'react-native'
-import axios from 'axios'
+import { api } from '../api'
 
 const Registrarse = ({ navigation }) => {
 	const [nombre, setNombre] = useState('')
@@ -21,10 +21,7 @@ const Registrarse = ({ navigation }) => {
 			IdRefugio: 1,
 		}
 
-		const { status } = await axios.post(
-			'http://192.168.0.115:5000/Usuario',
-			data
-		)
+		const { status } = await api.post('/Usuario', data)
 		if (status === 201) {
 			console.log('creo el usuario')
 			// navigation.navigate('/')

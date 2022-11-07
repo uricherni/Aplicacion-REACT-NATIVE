@@ -10,7 +10,7 @@ import {
 	FlatList,
 	Button,
 } from 'react-native'
-import axios from 'axios'
+import { api } from '../api'
 
 // const Item = ({ item }) => {
 // 	const [textValue, setValue] = useState('')
@@ -37,7 +37,7 @@ const Form = ({ navigate }) => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get('http://10.152.2.122:5000/Pregunta')
+		const { data } = await api.get('/Pregunta')
 		setPreguntas(data)
 	}
 	const [respuesta, setRespuesta] = useState(
@@ -52,7 +52,12 @@ const Form = ({ navigate }) => {
 		const { text } = event.nativeEvent
 		const newArray = respuesta.map((item, i) => {
 			if (index === i) {
-				return { ...item, Descripcion: text, IdPregunta: idPregunta, IdPostulacion: IdPostulacion }
+				return {
+					...item,
+					Descripcion: text,
+					IdPregunta: idPregunta,
+					IdPostulacion: IdPostulacion,
+				}
 			} else {
 				return item
 			}
@@ -77,7 +82,6 @@ const Form = ({ navigate }) => {
 
 	return (
 		<View style={{ flex: 1 }}>
-
 			<ImageBackground
 				source={{
 					uri: 'https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png',
@@ -86,7 +90,6 @@ const Form = ({ navigate }) => {
 				blurRadius={0}
 				style={{ flex: 1, opacity: 0.5 }}
 			>
-
 				<FlatList
 					data={preguntas}
 					keyExtractor={(item) => item.IdPregunta}
@@ -102,9 +105,7 @@ const Form = ({ navigate }) => {
 								<TextInput
 									style={styles.input}
 									value={respuesta[index].Descripcion}
-									onChange={(event) =>
-										onChange(event, index, item.IdPregunta)
-									}
+									onChange={(event) => onChange(event, index, item.IdPregunta)}
 									// onChangeText={(text) =>
 									// 	setRespuesta({ ...respuesta, Descripcion: text })
 									// }
@@ -116,18 +117,15 @@ const Form = ({ navigate }) => {
 						)
 					}}
 				/>
-
 			</ImageBackground>
 
-
 			<Button
-			title="Enviar"
-			blurRadius={3}
-			style={styles.Enviar}
-			onPress={() => Respuesta()}
+				title="Enviar"
+				blurRadius={3}
+				style={styles.Enviar}
+				onPress={() => Respuesta()}
 			/>
-			</View>
-
+		</View>
 	)
 }
 export default Form
@@ -162,7 +160,6 @@ const styles = StyleSheet.create({
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		width: 100,
-		
 	},
 
 	scrollView: {
