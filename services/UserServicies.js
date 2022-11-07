@@ -1,13 +1,12 @@
-import UsuarioValido from "./UsuarioValido.json"
+import axios from "axios";
 
-async function login(usuario, contraseña){
-	if (usuario === UsuarioValido.user && contraseña === UsuarioValido.password){
-		return true
-	} else {
-		throw new Error("usuario y/o contraseña incorrecta")
-	}
-}
-
-export default {
-	login, 
+export async function dologin(usuario, contraseña){
+	await axios({
+		method: 'post',
+		url: "http://10.152.2.99:5000/Usuario",
+		data: {
+			usuario: usuario,
+			Password: contraseña
+		}
+	})
 }

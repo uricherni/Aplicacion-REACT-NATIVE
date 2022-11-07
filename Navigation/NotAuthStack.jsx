@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import LogIn from '../screens/Login'
 import Inicio from '../screens/Inicio'
 import Registrarse from '../screens/Registrarse'
-import Cuenta from '../screens/Cuenta'
 import Home from '../screens/Home'
 
 const Stack = createNativeStackNavigator()
@@ -26,11 +25,6 @@ const NotAuthStack = () => {
 				options={{ headerShown: false }}
 				name="LogIn"
 				component={LogIn}
-			/>
-			<Stack.Screen
-				options={{ headerShown: false }}
-				name="cuenta"
-				component={Cuenta}
 			/>
 			<Stack.Screen
 				options={{ headerShown: false }}

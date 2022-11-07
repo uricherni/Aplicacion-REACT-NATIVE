@@ -18,7 +18,7 @@ const LogIn = ({ navigation }) => {
 	const [password, setPassword] = useState('')
 
 	function onClick() {
-		navigation.navigate('cuenta')
+		navigation.navigate('Home')
 	}
 
 	// const { loginUsuario } = useContext(UserContext)
@@ -44,6 +44,7 @@ const LogIn = ({ navigation }) => {
 			console.log(error.message)
 		}
 	}
+
 	return (
 		<>
 			<View style={{ flex: 1, backgroundColor: '#6ED4C8' }}>
@@ -71,7 +72,7 @@ const LogIn = ({ navigation }) => {
 					/>
 				</View>
 
-				<TouchableOpacity style={styles.Enviar} onPress={() => LogInUser()}>
+				<TouchableOpacity style={styles.Enviar} onPress={LogInUser}>
 					<Text>Sign In</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.Enviar} onPress={onClick}>
