@@ -1,6 +1,7 @@
 import { useReducer } from 'react'
 import { UserContext } from './UserContext'
 import userReducer from './userReducer'
+import { GET_LOGIN } from '../../types'
 import { api } from '../../api'
 
 const INIT_STATE = {
@@ -8,6 +9,7 @@ const INIT_STATE = {
 	usuario: null,
 }
 
+// eslint-disable-next-line react/prop-types
 export const UserState = ({ children }) => {
 	const [state, dispatch] = useReducer(userReducer, INIT_STATE)
 
@@ -18,7 +20,7 @@ export const UserState = ({ children }) => {
 		}
 		const result = await api.post('Usuario/login', data)
 		dispatch({
-			type: 'LOGIN',
+			type: GET_LOGIN,
 			payload: result.data.usuario,
 		})
 	}
