@@ -21,25 +21,25 @@ const LogIn = ({ navigation }) => {
 		navigation.navigate('Home')
 	}
 
-	// const { loginUsuario } = useContext(UserContext)
+	const { loginUsuario } = useContext(UserContext)
 	const LogInUser = async () => {
 		try {
-			// loginUsuario(email, password)
+			loginUsuario(email, password)
 			// const islogged = await UserServicies.login("Uri", "1234")
 			// if (islogged) {
 			// 	SetUser(true)
 			// }
 
-			const data = {
-				Email: email,
-				Password: password,
-			}
+			// const data = {
+			// 	Email: email,
+			// 	Password: password,
+			// }
 
-			const result = await api.post('Usuario/login', data)
+			// const result = await api.post('Usuario/login', data)
 
 			navigation.navigate('Home')
 
-			console.log(result.data)
+			// console.log(result.data)
 		} catch (error) {
 			console.log(error.message)
 		}
