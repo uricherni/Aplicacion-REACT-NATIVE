@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import {
 	Text,
 	TextInput,
@@ -11,26 +11,13 @@ import {
 	Button,
 } from 'react-native'
 import { api } from '../api'
+import { UserContext } from '../contexts/UserContext/UserContext'
 
-// const Item = ({ item }) => {
-// 	const [textValue, setValue] = useState('')
-
-// 	return (
-// 		<>
-// 			<Text style={styles.label}>{item.Descripcion} </Text>
-// 			<TextInput
-// 				style={styles.input}
-// 				value={textValue}
-// 				onChange={(e) => setValue(e.target.value)}
-// 				placeholder="Respuesta"
-// 				keyboardType="default"
-// 			/>
-// 		</>
-// 	)
-// }
-
-const Form = ({ navigate }) => {
+const Form = ({ route, navigate }) => {
 	const [preguntas, setPreguntas] = useState([])
+
+	const idMascota = route.params
+	const { usuario } = useContext(UserContext)
 
 	useEffect(() => {
 		consultarData()
@@ -56,7 +43,7 @@ const Form = ({ navigate }) => {
 					...item,
 					Descripcion: text,
 					IdPregunta: idPregunta,
-					IdPostulacion: IdPostulacion,
+					IdPostulacion: 0,
 				}
 			} else {
 				return item
@@ -69,8 +56,8 @@ const Form = ({ navigate }) => {
 		console.log(respuesta)
 		//El envio de data es ok!
 		respuesta.map((res) => {
-			axios
-				.post(`http://10.152.2.122:5000/Respuesta`, res) //res contiene las 18 respuestas
+			api
+				.post('/Respuesta', res) //res contiene las 18 respuestas
 				.then(function (response) {
 					console.log('guardo')
 				})
@@ -78,6 +65,15 @@ const Form = ({ navigate }) => {
 					console.log(error)
 				})
 		})
+		const dataPostulacion = {
+			IdMascota: idMascota,
+			IdUsuario: usuario.IdUsuario,
+			Aceptado: true,
+		}
+		//ejecutamos la postulacion
+		const { data } = api.post('/Postulaciones', dataPostulacion)
+
+		console.log('Postulacion', data)
 	}
 
 	return (

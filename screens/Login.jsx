@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import {
 	View,
 	TextInput,
@@ -8,12 +8,12 @@ import {
 	Image,
 	Text,
 } from 'react-native'
+// import { AsyncStorage } from '@react-native-async-storage/async-storage'
 import { UserContext } from '../contexts/UserContext/UserContext'
 import { api } from '../api'
 // import UserServicies from '../services/UserServicies'
 
 const LogIn = ({ navigation }) => {
-	// const { SetUser } = useContext(UserContext)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -25,33 +25,31 @@ const LogIn = ({ navigation }) => {
 	const LogInUser = async () => {
 		try {
 			loginUsuario(email, password)
-			// const islogged = await UserServicies.login("Uri", "1234")
-			// if (islogged) {
-			// 	SetUser(true)
-			// }
-
-			// const data = {
-			// 	Email: email,
-			// 	Password: password,
-			// }
-
-			// const result = await api.post('Usuario/login', data)
-
 			navigation.navigate('Home')
-
-			// console.log(result.data)
 		} catch (error) {
 			console.log(error.message)
 		}
 	}
 
+	// let userStorage = ''
+	// useEffect(() => {
+	// 	const getDataStorage = async () => {
+	// 		await AsyncStorage.getItem('usuario')
+	// 	}
+	// 	userStorage = getDataStorage()
+	// }, [])
+
+	// if (userStorage) {
+	// 	navigation.navigate('Home')
+	// }
+
 	return (
 		<>
-			<View style={{ flex: 1, backgroundColor: '#6ED4C8' }}>
-				<Image
+			<View style={{ flex: 1, backgroundColor: '#6ED4C8', top: 40 }}>
+				{/* <Image
 					style={styles.img}
 					source={require('../assets/logo.png')}
-				></Image>
+				></Image> */}
 
 				<View style={styles.Texto}>
 					<TextInput

@@ -1,3 +1,4 @@
+// import { AsyncStorage } from '@react-native-async-storage/async-storage'
 import { useReducer } from 'react'
 import { UserContext } from './UserContext'
 import userReducer from './userReducer'
@@ -19,11 +20,19 @@ export const UserState = ({ children }) => {
 			Password: password,
 		}
 		const result = await api.post('Usuario/login', data)
+
+		// await saveDataStorage(result.data.usuario, result.data.token)
+
 		dispatch({
 			type: GET_LOGIN,
 			payload: result.data.usuario,
 		})
 	}
+
+	// const saveDataStorage = async (usuario, token) => {
+	// 	await AsyncStorage.setItem('usuario', JSON.stringify(usuario))
+	// 	await AsyncStorage.setItem('token', token.toString())
+	// }
 	return (
 		// eslint-disable-next-line react/react-in-jsx-scope
 		<UserContext.Provider
