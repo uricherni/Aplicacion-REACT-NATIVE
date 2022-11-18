@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react"
-import {StyleSheet,Text,View,SafeAreaView,FlatList,StatusBar,} from "react-native"
+import {StyleSheet,Text,View,SafeAreaView,FlatList,StatusBar, TouchableOpacity, Button} from "react-native"
 import axios from "axios"
+import { api } from '../api'
 
-const Item = ({ item }) => (
-	
-	<View style={styles.item}>
-	
-		<Text style={styles.title}>IdUsuario{item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
-		<Text style={styles.title}>Nombre:Uriel {item.IdUsuario}--IdMascota-{item.IdMascota}</Text>
-		
-	</View>
-)
+const Item = ({ item, onPress, backgroundColor, textColor }) => (
+	<TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+	  <Text style={[styles.title, textColor]}>{item.Nombre} quiere aplicar a: {item.NombreMascota}</Text>
+	  <Button title="Aceptar" onPress={()=>{}}></Button>
+	  <Button title="Reachazar" onPress={()=>{}}></Button>
 
+	</TouchableOpacity>
+  );
+
+const renderItem = ({ item }) => {
+    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={{ backgroundColor }}
+        textColor={{ color }}
+      />
+
+    );
+  };
 
 const Aplicante = () => {
 	const [aplicantes, setAplicantes] = useState()
@@ -20,10 +34,11 @@ const Aplicante = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get(BASE_API + "Postulaciones")
+		const { data } = await api.get('/Postulaciones')
+		console.log(data)
 		setAplicantes(data)
 	}
-
+	
 
 
 
@@ -36,14 +51,14 @@ const Aplicante = () => {
 				renderItem={({ item }) => <Item item={item} />}
 				renderSectionHeader={({ section: { item } }) => (
 				
-					<Text style={styles.header}>{item.IdPostulante}</Text>
+					<Text style={styles.header}>{item.IdPostulante}sdvef</Text>
 					
 				)}
 			/>
 		</SafeAreaView>
 	)
 }
-
+//Object.keys(aplicantes[0]).length
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,

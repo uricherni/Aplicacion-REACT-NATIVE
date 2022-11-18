@@ -10,7 +10,9 @@ const Stack = createNativeStackNavigator()
 
 const NotAuthStack = () => {
 	return (
-		<Stack.Navigator>
+		<Stack.Navigator
+			initialRouteName={"Inicio"}
+		>
 			<Stack.Screen
 				options={{ headerShown: false }}
 				name="Inicio"
