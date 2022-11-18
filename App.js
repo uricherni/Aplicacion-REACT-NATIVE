@@ -8,7 +8,7 @@ const App = () => {
 	return (
 		<NavigationContainer>    
 			<UserState>
-				<NotAuthStack/>
+				<MainNavigation/>
 			</UserState>
 		</NavigationContainer>
 	)
