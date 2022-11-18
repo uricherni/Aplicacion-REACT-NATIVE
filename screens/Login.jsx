@@ -21,6 +21,9 @@ const LogIn = ({ navigation }) => {
 		navigation.navigate('Home')
 	}
 
+	function onClick() {
+		navigation.navigate('Registrarse')
+	}
 	const { loginUsuario } = useContext(UserContext)
 	const LogInUser = async () => {
 		try {

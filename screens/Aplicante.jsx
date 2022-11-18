@@ -20,7 +20,7 @@ const Aplicante = () => {
 	}, [])
 
 	const consultarData = async () => {
-		const { data } = await axios.get("10.152.2.122:5000/Postulaciones")
+		const { data } = await axios.get(BASE_API + "Postulaciones")
 		setAplicantes(data)
 	}
 
