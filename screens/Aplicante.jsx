@@ -40,7 +40,12 @@ const Aplicante = () => {
 	}
 	
 
-
+	const Respuesta = async () => {
+		const { data } = await api.udate('/Postulaciones')
+		console.log(data)
+		setAplicantes(data)
+	}
+	
 
 	
 	return (

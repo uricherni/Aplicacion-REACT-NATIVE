@@ -8,6 +8,7 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import MainStack from "./stacks/MainStack"
 import ComprasStack from "./stacks/ComprasStack"
 import AplicantesStack from "./stacks/AplicantesStack"
+import NotAuthStack from ".//NotAuthStack"
 
 const Tab = createBottomTabNavigator()
 
@@ -37,9 +38,9 @@ const MainNavigation = () => {
 
 	return (
 		<Tab.Navigator screenOptions={screenOptions}>
-			<Tab.Screen name={"Home"} component={MainStack} />
+			<Tab.Screen name={"Home"} component={NotAuthStack} />
 			<Tab.Screen name={"Aplicante"} component={AplicantesStack} />
-			<Tab.Screen name={"Compras"} component={ComprasStack} />
+			<Tab.Screen name={"Compras"} component={ComprasStack}/>
 		</Tab.Navigator>
 	)
 }
