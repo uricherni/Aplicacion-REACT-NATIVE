@@ -1,31 +1,59 @@
-import React, { useEffect, useState } from "react"
-import {StyleSheet,Text,View,SafeAreaView,FlatList,StatusBar, TouchableOpacity, Button} from "react-native"
-import axios from "axios"
+import React, { useEffect, useState } from 'react'
+import {
+	StyleSheet,
+	Text,
+	View,
+	SafeAreaView,
+	FlatList,
+	StatusBar,
+	TouchableOpacity,
+	Button,
+} from 'react-native'
+import axios from 'axios'
 import { api } from '../api'
 
-const Item = ({ item, onPress, backgroundColor, textColor }) => (
-	<TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-	  <Text style={[styles.title, textColor]}>{item.Nombre} quiere aplicar a: {item.NombreMascota}</Text>
-	  <Button title="Aceptar" onPress={()=>{}}></Button>
-	  <Button title="Reachazar" onPress={()=>{}}></Button>
+const Item = ({ item, onPress, backgroundColor, textColor }) => {
+	const actualizarPostulacion = async (isAcept, idPostulacion) => {
+		let data = {}
 
-	</TouchableOpacity>
-  );
+		if (isAcept) {
+			data.Aceptado = 1
+		} else {
+			data.Aceptado = 0
+		}
+
+		await api.put(`/Postulaciones/${idPostulacion}`, data)
+	}
+	return (
+		<TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+			<Text style={[styles.title, textColor]}>
+				{item.Nombre} quiere aplicar a: {item.NombreMascota}
+			</Text>
+			<Button
+				title="Aceptar"
+				onPress={() => actualizarPostulacion(true, item.IdPostulacion)}
+			></Button>
+			<Button
+				title="Reachazar"
+				onPress={() => actualizarPostulacion(false, item.IdPostulacion)}
+			></Button>
+		</TouchableOpacity>
+	)
+}
 
 const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-    const color = item.id === selectedId ? 'white' : 'black';
+	const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff'
+	const color = item.id === selectedId ? 'white' : 'black'
 
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{ backgroundColor }}
-        textColor={{ color }}
-      />
-
-    );
-  };
+	return (
+		<Item
+			item={item}
+			onPress={() => setSelectedId(item.id)}
+			backgroundColor={{ backgroundColor }}
+			textColor={{ color }}
+		/>
+	)
+}
 
 const Aplicante = () => {
 	const [aplicantes, setAplicantes] = useState()
@@ -38,16 +66,13 @@ const Aplicante = () => {
 		console.log(data)
 		setAplicantes(data)
 	}
-	
 
 	const Respuesta = async () => {
-		const { data } = await api.udate('/Postulaciones')
+		const { data } = await api.put('/Postulaciones', data)
 		console.log(data)
 		setAplicantes(data)
 	}
-	
 
-	
 	return (
 		<SafeAreaView style={styles.container}>
 			<FlatList
@@ -55,9 +80,7 @@ const Aplicante = () => {
 				keyExtractor={(item, index) => index}
 				renderItem={({ item }) => <Item item={item} />}
 				renderSectionHeader={({ section: { item } }) => (
-				
 					<Text style={styles.header}>{item.IdPostulante}sdvef</Text>
-					
 				)}
 			/>
 		</SafeAreaView>
@@ -71,13 +94,13 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 	},
 	item: {
-		backgroundColor: "#00FFF7",
+		backgroundColor: '#00FFF7',
 		padding: 20,
 		marginVertical: 8,
 	},
 	header: {
 		fontSize: 20,
-		backgroundColor: "#009BFF",
+		backgroundColor: '#009BFF',
 	},
 	title: {
 		fontSize: 12,
