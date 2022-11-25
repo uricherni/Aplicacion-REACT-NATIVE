@@ -11,7 +11,7 @@ const PetCard = ({ mascota }) => {
 		navigation.navigate('Form', IdMascota)
 	}
 	const {
-		Nombre,
+		NombreMascota,
 		Edad,
 		Estado,
 		Descripcion,
@@ -26,9 +26,9 @@ const PetCard = ({ mascota }) => {
 			<Card>
 				<Card.Content>
 					<Title>
-						<Text> Refugio: {NombreRefugio} </Text>
-					</Title>
-					<Text> Nombre:{Nombre}</Text>
+						<Text> Nombre: {NombreMascota} </Text>
+					</Title>	
+					<Text> Refugio: {NombreRefugio}</Text>				
 					<Text> Edad:{Edad} años</Text>
 					<Text> Estado: {Estado}</Text>
 					<Text> Raza: {NombreRaza}</Text>
